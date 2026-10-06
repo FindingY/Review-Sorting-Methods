@@ -292,6 +292,7 @@ Your completed `sorting_lab.py` should:
 - Generate random lists.
 - Implement the required sorting algorithms.
 - Display the sorting process graphically.
+- Produce sound effects whose pitch depends on the list values being processed.
 - Provide explanation/pseudocode options.
 - Use a working menu.
 - Continue running until the user chooses to exit.
@@ -539,7 +540,134 @@ Selecting an algorithm should print that algorithm's explanation and pseudocode 
 
 ---
 
-# Part 9 — Visualization
+# Part 9 — Sound Visualization
+
+In addition to the bar graph, your program should produce a short sound during the sorting animation.
+
+The **pitch of the sound should depend on the numeric value being processed**.
+
+For example:
+
+- Smaller values should produce lower pitches.
+- Larger values should produce higher pitches.
+
+This gives you both a visual and an audible representation of the sorting process.
+
+---
+
+## Mapping Values to Pitch
+
+The list values will normally be between:
+
+```python
+MIN_VALUE = 1
+MAX_VALUE = 100
+```
+
+You should map that range to a reasonable frequency range.
+
+For example, you might map values into approximately:
+
+```text
+200 Hz to 1200 Hz
+```
+
+A linear mapping can be done conceptually with:
+
+```text
+frequency =
+    LOW_FREQUENCY
+    +
+    proportion_through_value_range
+    *
+    frequency_range
+```
+
+You should write a helper function such as:
+
+```python
+def value_to_frequency(value):
+    # convert a list value into a sound frequency
+    pass
+```
+
+Do not hard-code a separate frequency for every possible value.
+
+---
+
+## Playing a Sound
+
+You should also write a helper function such as:
+
+```python
+def play_value_sound(value):
+    # convert value to frequency
+    # play a short sound at that frequency
+    pass
+```
+
+Your implementation should be designed so that sound does **not** crash the program if audio is unavailable.
+
+You may use built-in operating-system features when possible.
+
+For example:
+
+- Windows: `winsound`
+- macOS: a system command or another built-in mechanism
+- Linux/Unix: terminal bell or another available method
+
+Your code should fail gracefully if sound cannot be played.
+
+---
+
+## Where to Play the Sound
+
+The sound should correspond to the value involved in an important sorting step.
+
+Examples include:
+
+### Selection Sort
+
+Play the value that is moved into its final position.
+
+### Bubble Sort
+
+Play one of the values involved in a swap.
+
+### Insertion Sort
+
+Play the value currently being inserted.
+
+### Merge Sort
+
+Play each value as it is written back into the main list.
+
+### Quick Sort
+
+Play the pivot or a value involved in a swap.
+
+You do not need to play a sound for every comparison.
+
+The goal is to make the animation understandable rather than overwhelming.
+
+---
+
+## Sound Setting
+
+Your program should include an easy way to turn sounds on or off.
+
+For example:
+
+```python
+SOUND_ENABLED = True
+```
+
+Your sound function should check this setting before attempting to play anything.
+
+---
+
+# Part 10 — Visualization
+
 
 
 The starter file contains:
@@ -564,7 +692,7 @@ Do **not** worry about making an elaborate animation system. The purpose of the 
 
 ---
 
-# Part 10 — Menu-Driven Program
+# Part 11 — Menu-Driven Program
 
 Your final program should repeatedly display a menu similar to:
 
@@ -605,7 +733,7 @@ selection_sort(working_list)
 
 ---
 
-# Part 11 — Questions
+# Part 12 — Questions
 
 Create a short document or add your answers to the end of this README if instructed.
 
@@ -644,6 +772,7 @@ Your program must:
 - Generate random lists.
 - Implement the sorting algorithms manually.
 - Display the sorting process graphically.
+- Produce sound effects whose pitch depends on the list values being processed.
 - Provide a student-written explanation and pseudocode for each sorting algorithm.
 - Include a menu option for displaying the explanation/pseudocode for each algorithm.
 - Allow the user to run more than one algorithm.
@@ -759,6 +888,7 @@ Before submitting, click your own link and confirm that the repository is visibl
 - [ ] `sorting_lab.py` is complete
 - [ ] Program runs successfully
 - [ ] Visualizations work
+- [ ] Sound effects work and pitch changes with value
 - [ ] Algorithm explanations/pseudocode are included
 - [ ] Required sorting algorithms are implemented manually
 - [ ] Latest changes have been committed

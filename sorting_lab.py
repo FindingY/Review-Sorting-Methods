@@ -8,6 +8,8 @@ Do not use list.sort() or sorted() to perform the sorting.
 
 import random
 import time
+import platform
+import subprocess
 import matplotlib.pyplot as plt
 
 
@@ -19,6 +21,45 @@ DEFAULT_LIST_SIZE = 20
 MIN_VALUE = 1
 MAX_VALUE = 100
 ANIMATION_DELAY = 0.10
+SOUND_ENABLED = True
+LOW_FREQUENCY = 200
+HIGH_FREQUENCY = 1200
+
+
+# ------------------------------------------------------------
+# Sound Functions
+# ------------------------------------------------------------
+
+def value_to_frequency(value):
+    """
+    Convert a list value into a frequency.
+
+    TODO:
+        Map values from MIN_VALUE through MAX_VALUE
+        into frequencies from LOW_FREQUENCY through HIGH_FREQUENCY.
+
+        Smaller values should produce lower pitches.
+        Larger values should produce higher pitches.
+    """
+    pass
+
+
+def play_value_sound(value):
+    """
+    Play a short sound whose pitch depends on value.
+
+    TODO:
+        1. Return immediately if SOUND_ENABLED is False.
+        2. Convert value to a frequency using value_to_frequency().
+        3. Play a short sound using an appropriate method for
+           the current operating system.
+        4. Make sure sound errors do not crash the program.
+
+    HINT:
+        platform.system() can help determine whether the
+        computer is running Windows, macOS, or Linux/Unix.
+    """
+    pass
 
 
 # ------------------------------------------------------------
@@ -66,6 +107,7 @@ def selection_sort(values):
         2. Find the smallest value in the unsorted portion.
         3. Swap it into the correct position.
         4. Call draw_list() after an important change.
+        5. Call play_value_sound() for a meaningful value.
     """
     pass
 
@@ -79,6 +121,7 @@ def bubble_sort(values):
         out of order.
 
         Call draw_list() after each swap.
+        Also call play_value_sound() for one of the swapped values.
     """
     pass
 
@@ -92,6 +135,7 @@ def insertion_sort(values):
         within the already-sorted portion of the list.
 
         Call draw_list() as values move.
+        Play the value currently being inserted.
     """
     pass
 
@@ -120,6 +164,8 @@ def merge_sort(values):
 
         You may modify this function's parameters or create helper
         functions if needed to make the visualization work.
+
+        Play each value as it is written back into the main list.
     """
     pass
 
@@ -134,6 +180,7 @@ def quick_sort(values):
 
     TODO:
         Implement Quick Sort and visualize important steps.
+        Play the pivot or a value involved in a swap.
     """
     pass
 
