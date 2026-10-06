@@ -67,13 +67,12 @@ def play_value_sound(value):
 # ------------------------------------------------------------
 
 def generate_list(size=DEFAULT_LIST_SIZE):
-    """
-    Return a list containing 'size' random integers.
-
-    TODO:
-        Generate random integers between MIN_VALUE and MAX_VALUE.
-    """
-    pass
+    list = []
+    counter = 0
+    while counter < size:
+        list.append(random.randint(MIN_VALUE, MAX_VALUE))
+        counter += 1
+    return list
 
 
 def draw_list(values, title="Sorting"):
@@ -109,8 +108,16 @@ def selection_sort(values):
         4. Call draw_list() after an important change.
         5. Call play_value_sound() for a meaningful value.
     """
-    pass
+    for start in range(len(values)):
+        min_index = start
+        for num in range(start+1, len(values)):
+            if values[num] < values[start]:
+                min_index = num
 
+        values[start], values[min_index] = values[min_index], values[start]
+        draw_list(values)
+
+        return values
 
 def bubble_sort(values):
     """
