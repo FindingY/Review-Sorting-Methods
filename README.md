@@ -141,6 +141,37 @@ python3 -m pip install matplotlib
 
 ---
 
+## Important Matplotlib Note
+
+When a sorting animation is running, **do not close the Matplotlib graph window** until the sort has finished.
+
+The Python program may still be trying to update the graph. If you close the graph window while the animation is running, the terminal may appear to freeze or stop responding normally.
+
+Wait until the sorting animation finishes and the program returns to the menu before closing the graph window.
+
+If your terminal does appear to get stuck, press:
+
+```bash
+Ctrl+C
+```
+
+This will interrupt the running Python program and return you to the command line.
+
+After that, you can restart the lab with:
+
+```bash
+python sorting_lab.py
+```
+
+or:
+
+```bash
+python3 sorting_lab.py
+```
+
+---
+
+
 ## Step 4 — Build Your Solution
 
 Complete the `TODO` sections in:
