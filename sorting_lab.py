@@ -168,33 +168,51 @@ def insertion_sort(values):
 def merge(left, right):
     """
     Merge two already-sorted lists.
-
-    TODO:
-        Return one sorted list containing all values
-        from left and right.
+    Return one sorted list containing all values.
     """
-    pass
+    result = []
+    i = 0
+    j = 0
+
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+
+    while i < len(left):
+        result.append(left[i])
+        i += 1
+
+    while j < len(right):
+        result.append(right[j])
+        j += 1
+
+    return result
 
 
 def merge_sort(values):
     """
     Sort values using Merge Sort.
-
-    TODO:
-        Implement Merge Sort recursively.
-
-    NOTE:
-        Merge Sort is a little different from the other algorithms
-        because recursive calls often create smaller lists.
-
-        You may modify this function's parameters or create helper
-        functions if needed to make the visualization work.
-
-        Play each value as it is written back into the main list.
     """
-    pass
+    if len(values) <= 1:
+        return values
 
+    middle = len(values) // 2
 
+    left = merge_sort(values[:middle])
+    right = merge_sort(values[middle:])
+
+    merged = merge(left, right)
+
+    for i in range(len(merged)):
+        values[i] = merged[i]
+        play_value_sound(values[i])
+        draw_list(values)
+
+    return values
 def quick_sort(values):
     """
     OPTIONAL CHALLENGE
@@ -215,13 +233,20 @@ def quick_sort(values):
 # ------------------------------------------------------------
 
 def print_selection_info():
-    """
-    TODO:
-        Print:
-        1. A short explanation of Selection Sort in your own words.
-        2. Pseudocode for Selection Sort.
-    """
-    pass
+    print("""Selection Sort:
+
+Explanation:
+Selection Sort finds the smallest value in the unsorted
+part of the list and swaps it into the correct position.
+It repeats this process until the list is sorted.
+
+Pseudocode:
+FOR each position in the list:
+    Set the current position as the minimum
+    FOR each remaining value:
+        IF the value is smaller than the minimum:
+            Update the minimum
+    Swap the minimum into the current position""")
 
 
 def print_bubble_info():
